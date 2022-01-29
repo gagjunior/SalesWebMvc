@@ -1,5 +1,4 @@
-﻿#nullable disable
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace SalesWebMvc.Data
 {
@@ -11,5 +10,8 @@ namespace SalesWebMvc.Data
         }
 
         public DbSet<SalesWebMvc.Models.Departament> Departament { get; set; }
+        public DbSet<SalesWebMvc.Models.Seller> Seller { get; set; }
+        public DbSet<SalesWebMvc.Models.SalesRecord> SalesRecord { get; set; }
+
     }
 }
