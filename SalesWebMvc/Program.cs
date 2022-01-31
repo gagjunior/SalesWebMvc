@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SalesWebMvc.Data;
+using SalesWebMvc.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,7 @@ builder.Services.AddDbContext<SalesWebMvcContext>(options =>
     Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.28-mysql")));
 
 builder.Services.AddScoped<SeedingService>();
+builder.Services.AddScoped<SellerService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -27,8 +29,8 @@ else
     {
         var services = serviceScope.ServiceProvider;
 
-        var myDependency = services.GetRequiredService<SeedingService>();
-        myDependency.Seed();
+        var seedingService = services.GetRequiredService<SeedingService>();
+        seedingService.Seed();
     }
 }
 
